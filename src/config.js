@@ -10,7 +10,7 @@ const dev = {
 
 const prod = {
 	baseURL: '/api/',
-	landingPageUrl: "https://app.openaitemplate.com",
+	landingPageUrl: "http://snazzy-caramel-592ced.netlify.app",
 	stripe: {
 		free: "price_1MX7qPK0vBwAJTX5YXX2Yjio",
 		entry: "price_1MX7n2K0vBwAJTX5oUvhXp0g",
