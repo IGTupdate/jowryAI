@@ -1,0 +1,13 @@
+ [build]
+  command = "npm run build"
+  funcs = "lambda"
+
+[[plugins]]
+  package = "netlify-plugin-node-14"
+  node = {version = "14.17.6"}
+  npm = {version = "6.14.15"}
+  python = {version = "2.7"}
+  install_command = "yarn install - install command"  
+  
+[dev]
+  command = "node ./index.js - start the app command"
