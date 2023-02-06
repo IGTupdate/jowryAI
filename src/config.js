@@ -1,6 +1,6 @@
 const dev = {
-	baseURL: "http://localhost:3080/api/",
-	landingPageUrl: "http://localhost:3080",
+	baseURL: "http://13.53.193.193:3080/api/",
+	landingPageUrl: "http://13.53.193.193:3080",
 	stripe: {
 		free: "price_1MX7qPK0vBwAJTX5YXX2Yjio",
 		entry: "price_1MX7n2K0vBwAJTX5oUvhXp0g",
@@ -10,7 +10,7 @@ const dev = {
 
 const prod = {
 	baseURL: '/api/',
-	landingPageUrl: "http://snazzy-caramel-592ced.netlify.app",
+	landingPageUrl: "http://www.jowry.click:3080",
 	stripe: {
 		free: "price_1MX7qPK0vBwAJTX5YXX2Yjio",
 		entry: "price_1MX7n2K0vBwAJTX5oUvhXp0g",
