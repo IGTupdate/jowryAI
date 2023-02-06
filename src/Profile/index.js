@@ -3,12 +3,14 @@ import { Link, Switch, Route, } from 'react-router-dom'
 import { computed, observable, makeObservable } from 'mobx'
 import Header from '../Components/Header'
 import { IdentificationIcon,  CheckIcon,
+	// eslint-disable-next-line no-unused-vars
 	ChatAltIcon, UsersIcon,UserCircleIcon, ReplyIcon, ChevronLeftIcon,
 } from '@heroicons/react/outline'
 import MainBody from '../Components/Body'
 import Referral from './Referral'
 import Feedback from './Feedback'
 import {Helmet} from "react-helmet";
+// eslint-disable-next-line no-unused-vars
 import EnvIcon from './EnvIcon'
 import { withRouter } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
@@ -63,7 +65,7 @@ class Body extends Component {
 	@computed get currentPeriodEnd(){
 		// console.log(this.props.store.profile.current_period_end)
 		if(this.props.store.profile.current_period_end && this.props.store.profile.current_period_end.length > 0){
-			var days_difference = Math.round(((new Date(this.props.store.profile.current_period_end)).getTime() - (new Date()).getTime() ) / (1000 * 60 * 60 * 24));  
+			var days_difference = Math.round(((new Date(this.props.store.profile.current_period_end)).getTime() - (new Date()).getTime() ) / (1000 * 60 * 60 * 24));
 			if(days_difference < 0) {
 				return 0
 			}
@@ -98,7 +100,7 @@ class Body extends Component {
 	render() {
 	return (
 		<>
-			<Header 
+			<Header
 				title={this.props.store.profile.email}
 				desc={`${this.props.store.profile.fname} ${this.props.store.profile.lname}`}
 				category="Your Profile"
@@ -112,7 +114,7 @@ class Body extends Component {
 						<Helmet>
 							<title>{`My Profile - OpenAI Template`}</title>
 						</Helmet>
-						
+
 				</Route>
 
 				</Header>
@@ -130,15 +132,15 @@ class Body extends Component {
 					</Route>
 					<Route>
 
-						
-							
+
+
 						<Grid>
 
-						{this.plan.status === "trialing" ? 
+						{this.plan.status === "trialing" ?
 									<ToolForm
 									Icon={CheckIcon}
-									title={`Active Subscription`} 
-									desc={`${this.plan.plan === "Entry" ? "$30" : ""}${this.plan.plan === "Pro" ? "$90" : ""} billing  immediately. Ends trial and starts billing plan.`} 
+									title={`Active Subscription`}
+									desc={`${this.plan.plan === "Entry" ? "$30" : ""}${this.plan.plan === "Pro" ? "$90" : ""} billing  immediately. Ends trial and starts billing plan.`}
 									to={this.props.store.baseURL + "/user/stripe/activate"}
 									api={this.props.store.api}
 									fromColor="purple-500"
@@ -149,9 +151,9 @@ class Body extends Component {
 
 							{this.plan.plan === "None" ? <Tool
 								Icon={IdentificationIcon}
-								title={"Pricing Plans"} 
+								title={"Pricing Plans"}
 								api={this.props.store.api}
-								desc={"Upgrade, downgrade or cancel anytime."} 
+								desc={"Upgrade, downgrade or cancel anytime."}
 								to={"/my-profile/pricing"}
 								fromColor="red-400"
 						/> : null	}
@@ -162,46 +164,46 @@ class Body extends Component {
 
 								<ToolForm
 									Icon={IdentificationIcon}
-									title={"Cancel Subscription"} 
+									title={"Cancel Subscription"}
 									api={this.props.store.api}
-									desc={"Immediately cancelation of subscription and payments."} 
+									desc={"Immediately cancelation of subscription and payments."}
 									to={this.props.store.baseURL + "user/stripe/cancel"}
-									fromColor={this.props.store.profile.cancel_at_period_end ? "red-600" : "red-500"} 
-									toColor={this.props.store.profile.cancel_at_period_end ? "red-400" : "red-600"} 
+									fromColor={this.props.store.profile.cancel_at_period_end ? "red-600" : "red-500"}
+									toColor={this.props.store.profile.cancel_at_period_end ? "red-400" : "red-600"}
 								/>
-								
+
 								{/* <ToolForm
 									Icon={DatabaseIcon}
-									title={"Buy Credits"} 
-									desc={"250 x extra credits quick-buy"} 
+									title={"Buy Credits"}
+									desc={"250 x extra credits quick-buy"}
 									to={this.props.store.baseURL + "user/stripe/buy250"}
 									api={this.props.store.api}
 									fromColor="purple-500"
 									toColor="indigo-600"
 								/> */}
 							</>}
-							
+
 							{this.props.store.profile.cancel_at_period_end ? <>
 
 								<ToolForm
 									Icon={CheckIcon}
-									title={"Reactivate Subscription"} 
+									title={"Reactivate Subscription"}
 									api={this.props.store.api}
-									desc={"Immediately cancelation of subscription and payments."} 
+									desc={"Immediately cancelation of subscription and payments."}
 									to={this.props.store.baseURL + "user/stripe/uncancel"}
-									fromColor={this.props.store.profile.cancel_at_period_end ? "green-400" : "green-500"} 
-									toColor={this.props.store.profile.cancel_at_period_end ? "green-400" : "green-500"} 
+									fromColor={this.props.store.profile.cancel_at_period_end ? "green-400" : "green-500"}
+									toColor={this.props.store.profile.cancel_at_period_end ? "green-400" : "green-500"}
 								/>
 
 							</> : null}
 							<ToolForm
 								Icon={IdentificationIcon}
-								title={this.props.store.profile.cancel_at_period_end ? "Manage Subscription" : "Update Subscription"} 
+								title={this.props.store.profile.cancel_at_period_end ? "Manage Subscription" : "Update Subscription"}
 								api={this.props.store.api}
-								desc={"Change your plan, card details, or cancel the plan anytime."} 
+								desc={"Change your plan, card details, or cancel the plan anytime."}
 								to={this.props.store.baseURL + "user/stripe/customer-portal"}
-								fromColor={this.props.store.profile.cancel_at_period_end ? "blue-600" : "blue-500"} 
-								toColor={this.props.store.profile.cancel_at_period_end ? "blue-400" : "blue-600"} 
+								fromColor={this.props.store.profile.cancel_at_period_end ? "blue-600" : "blue-500"}
+								toColor={this.props.store.profile.cancel_at_period_end ? "blue-400" : "blue-600"}
 							/></>}
 
 
@@ -209,19 +211,19 @@ class Body extends Component {
 
 							<Tool
 								Icon={ChatAltIcon}
-								title={"Feedback"} 
-								desc={"Provide comments on your experience"} 
+								title={"Feedback"}
+								desc={"Provide comments on your experience"}
 								to={"/my-profile/feedback"}
 								fromColor="gray-400"
 								toColor="gray-400"
 							/>
 
-							
-							
-							<ToolDiv 
+
+
+							<ToolDiv
 								Icon={ReplyIcon}
-								title={"Log Out"} 
-								desc={"Sign out of your account"} 
+								title={"Log Out"}
+								desc={"Sign out of your account"}
 								onClick={this.props.store.handleLogout}
 								fromColor="gray-400"
 								toColor="gray-400"
@@ -229,13 +231,13 @@ class Body extends Component {
 						</Grid>
 					</Route>
 				</Switch>
-			
-			
 
-			
-		
 
-			
+
+
+
+
+
 </MainBody>
 </>)
 }
@@ -293,6 +295,7 @@ const Tool = ({ Icon, title, desc, to, group, fromColor, toColor, onClick, api }
 </div>
 </Link>
 
+// eslint-disable-next-line no-unused-vars
 const ATool = ({ Icon, title, desc, to, group, fromColor, toColor, onClick, api }) => <a href={to} className="flex relative">
 	<div  className="flex-1 text-left">
 	<div className={`absolute inset-0 bg-gradient-to-r from-${fromColor ? fromColor : "green-400"} to-${toColor ? toColor : "blue-500"} shadow-lg transform skew-y-0 -rotate-3 rounded-3xl `}></div>
