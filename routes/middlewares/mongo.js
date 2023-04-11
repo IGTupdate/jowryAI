@@ -1,5 +1,6 @@
 // Export mongoose
 const  mongoose = require("mongoose");
+const { v4 } = require("uuid");
 
 require('dotenv-flow').config();
 
@@ -32,15 +33,16 @@ function initial() {
 		  accountType: "admin",
 		  fname: "Admin",
 		  lname: "",
+		  referralId:v4(),
 		  accountType: "admin",
 		  plan: "Ultimate",
 		  status: "active",
 		  credits: 10000,
 		}).save(err => {
-		  if (err) {
-			console.log("error", err);
-		  }
-		  console.log("admin user added");
+			if (err) {
+				console.log("error", err);
+			}
+			console.log("admin user added");
 		});
 
 		new User({
@@ -50,9 +52,10 @@ function initial() {
 			fname: "OpenAI",
 			lname: "Support",
 			plan: "Ultimate",
+			referralId:v4(),
 			status: "active",
 			credits: 1000,
-		  }).save(err => {
+		}).save(err => {
 			if (err) {
 			  console.log("error", err);
 			}
